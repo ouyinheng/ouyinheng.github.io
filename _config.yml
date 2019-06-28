@@ -98,17 +98,11 @@ service-worker: true
 
 # Friends
 friends: [
-    # {
-    #     title: "WY",
-    #     href: "http://zhengwuyang.com"
-    # },{
-    #     title: "简书·BY",
-    #     href: "http://www.jianshu.com/u/e71990ada2fd"
-    # },{
-    #     title: "Apple",
-    #     href: "https://apple.com"
-    # },{
-    #     title: "Apple Developer",
-    #     href: "https://developer.apple.com/"
-    # }
+    {
+        title: "你不懂JS",
+        href: "https://www.yuque.com/ostwind/you-dont-know-js/readme"
+    },{
+        title: "前端基础",
+        href: "https://yuchengkai.cn/docs/frontend/"
+    }
 ]
