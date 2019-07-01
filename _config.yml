@@ -98,11 +98,17 @@ service-worker: true
 
 # Friends
 friends: [
-    {
-        title: "你不懂JS",
-        href: "https://www.yuque.com/ostwind/you-dont-know-js/readme"
-    },{
-        title: "前端基础",
-        href: "https://yuchengkai.cn/docs/frontend/"
-    }
+  {
+    title: "你不懂JS",
+    href: "https://www.yuque.com/ostwind/you-dont-know-js/readme"
+  },{
+    title: "前端基础",
+    href: "https://yuchengkai.cn/docs/frontend/"
+  }, {
+    title: "golang基础",
+    href: "https://github.com/hope-for/golang-examples"
+  }, {
+    title: "guanguans学习笔记",
+    href: "https://www.guanguans.cn/notes/"
+  }
 ]
