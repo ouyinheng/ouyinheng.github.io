@@ -28,6 +28,14 @@ js 是单线程语言，所有任务执行都要排队，这样就会有一个�
 - 执行优先级为：主线程 > microtask > macrotask
 - 典型的`macrotask`有`setTimeout`和`setInterval`,以及只有 IE 支持的 setImmediate，还有 MessageChannel 等，ES6 的 Promise 则是属于 microtask
 
+### ES6 中的 Promise
+
+遇到 Promise 中的 then 之前部分立即执行，而 then 则属于 microtask，进入任务队列
+
+### nodejs 中的 process.nextTick
+
+nodejs 中内置的 nextTick 属于 microtask
+
 ### nextTick
 
 从 [源码](https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js) 不难发现，Vue 在内部尝试对异步队列使用原生的 setImmediate Promise.then 和 MessageChannel，如果当前执行环境不支持，就采用 setTimeout(fn, 0)代替。
@@ -80,3 +88,50 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
   };
 }
 ```
+
+### 终极问题
+
+```js
+console.log(1);
+setTimeout(function() {
+  console.log("2");
+  process.nextTick(function() {
+    console.log("3");
+  });
+  new Promise(function(resolve) {
+    console.log("4");
+    resolve();
+  }).then(function() {
+    console.log("5");
+  });
+});
+process.nextTick(function() {
+  console.log("6");
+});
+new Promise(function(resolve) {
+  console.log("7");
+  resolve();
+}).then(function() {
+  console.log("8");
+});
+
+setTimeout(function() {
+  console.log("9");
+  process.nextTick(function() {
+    console.log("10");
+  });
+  new Promise(function(resolve) {
+    console.log("11");
+    resolve();
+  }).then(function() {
+    console.log("12");
+  });
+});
+console.log(13);
+```
+
+### 答案
+
+> 1 7 13 6 8 2 4 3 5 9 11 10 12
+
+这里的答案在 nodejs 中测试和浏览器中测试会有区别
