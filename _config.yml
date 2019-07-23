@@ -113,5 +113,8 @@ friends: [
   }, {
     title: "剑指offer？",
     href: "https://xin-tan.com/passages/2019-06-23-algorithm-offer/"
+  }, {
+    title: '某博客',
+    href: 'https://yhlben.github.io/interview/js.html'
   }
 ]
