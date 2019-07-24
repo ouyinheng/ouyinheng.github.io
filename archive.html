@@ -50,8 +50,10 @@ https://github.com/kitian616/jekyll-TeXt-theme
             {%- assign _date = _currentdate -%}
             {%- endif -%}
             <li>
-              <span class="tag-text">{{ _article.date | date: "%B %-d" }}</span>
-              <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+              <span style="display:inline-block;min-width: 140px">
+                <span class="tag-text" style="display:inline-block;min-width: 100px">{{ _article.date | date: "%B %-d" }}</span>
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+              </span>
               <a href="{{ _article.url | prepend: site.baseurl }}" style="color: #0085a1;">
                 {{ _article.title }}
               </a>
